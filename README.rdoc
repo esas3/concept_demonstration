@@ -1,7 +1,10 @@
 = ESA Semantic Space Study Concept Demonstration
 
 This concept prototype is the result of the work on the ESA Semantic Space
-Study under the contract *ESA ITT Number RFQ 3-13016/09/NL/CBi*.
+Study under the contract <b>ESA ITT Number RFQ 3-13016/09/NL/CBi</b>.
+
+Further information can be found at 
+http://www.infosys.tuwien.ac.at/prototype/esas3/
 
 == How to Run the Demonstration
 
