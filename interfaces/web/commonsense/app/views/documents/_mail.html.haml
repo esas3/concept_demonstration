@@ -1,0 +1,13 @@
+.from
+  From:
+  = mail_to mail.document.sender
+.to
+  To:
+  = mail_to mail.document.to
+.subject
+  Subject:
+  = mail.document.subject
+.message
+  Message:
+  %pre= mail.document.body
+

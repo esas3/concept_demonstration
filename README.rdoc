@@ -1,0 +1,13 @@
+= ESA Semantic Space Study Concept Demonstration
+
+This concept prototype is the result of the work on the ESA Semantic Space
+Study under the contract *ESA ITT Number RFQ 3-13016/09/NL/CBi*.
+
+== How to Run the Demonstration
+
+See HOWTO for details.
+
+== Copyright
+
+Copyright (c) 2010 Christian Inzinger, Johannes M. Schleicher, TU Wien. 
+See LICENSE for details.

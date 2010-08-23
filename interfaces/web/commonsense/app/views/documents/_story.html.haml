@@ -1,0 +1,22 @@
+- if story.document.respond_to?(:owned_by)
+  .owner
+    Owner:
+    = link_to_user story.document.owned_by
+.requestor
+  Requestor:
+  = link_to_user story.document.requested_by
+.story_type
+  Story Type:
+  = story.document.story_type
+.url
+  Url:
+  = link_to story.document.url
+.state
+  State:
+  = story.document.current_state
+.created_at
+  Created at:
+  = story.document.created_at
+.description
+  %pre&= story.document.description
+

@@ -1,0 +1,12 @@
+%div[document]
+  .title
+    = show_type(document)
+    = link_to document.name, document.try(:uri)
+  .summary= document.summary
+  .actions
+    = link_to "Add for Annotation", "#", :class => "add_to_bin", :'data-docid' => document.id
+    = link_to "Show", document.raw_uri
+    | Associated Concepts:
+    = link_to "Ocean"
+    | Experts: <em>none found</em>
+    -#= link_to "Show", document

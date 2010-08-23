@@ -1,0 +1,7 @@
+Run like so
+
+    export GATE_HOME=/Applications/GATE-5.1
+    export CLASSPATH=".:$GATE_HOME/bin/gate.jar:$GATE_HOME/lib/*"
+    javac BatchProcessApp.java &&
+    java BatchProcessApp -g tmpApp.gapp \
+      ../lib/commonsense/importer/esa_corpus/*.pdf

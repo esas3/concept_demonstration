@@ -1,0 +1,11 @@
+.document.condensed
+  .check_box
+    = check_box_tag "document_ids[]", @document.id
+  .title
+    = show_type(@document)
+    = link_to truncate(@document.name, :length => 30), @document
+  .summary= truncate(@document.summary, :length => 50)
+  .actions
+    = link_to "Remove", "#", :class => "remove", "data-docid" => @document.id
+    #{@document.outgoing_document_relations.count} Relations
+    

@@ -1,0 +1,39 @@
+@import compass/utilities/links/hover_link.sass
+
+.document
+  margin-top: .5em
+  .title 
+    font-size: 1.2em
+    margin-bottom: .1em
+    a, a:visited
+      color: #222
+      +hover-link
+    span
+      font-size: .7em
+      color: #004400
+      &.mail
+        color: #000044
+      &.chatmessage
+        color: #440044
+      &.commit
+        color: #999999
+  .summary
+    color= !quiet_color
+    em
+      background-color: #ff0
+  
+  &.condensed
+    .check_box
+      float: left
+      height: 3.5em
+
+.documents.condensed .document
+  .summary, .actions
+    display: none
+  .title 
+    margin-left: 4em
+    span
+      display: inline-block
+      width: 4em
+      text-align: right
+      margin-left: -5em

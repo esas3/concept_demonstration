@@ -1,0 +1,8 @@
+%h2= @tag.name.titlecase
+- content_for :head do 
+  :javascript
+    jQuery(function() {
+      window.showVis(#{@tag.id});
+    });
+- @tag.documents.each do |document|
+  = render :partial => "documents/document", :object => document

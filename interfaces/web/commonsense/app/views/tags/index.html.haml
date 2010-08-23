@@ -1,0 +1,22 @@
+- unless params[:id]
+  %h2 Tags
+
+  - planetaryRealmUri = "http://sweet.jpl.nasa.gov/2.0/astroPlanet.owl#PlanetaryRealm"
+  - physicalPhenomenaUri = "http://sweet.jpl.nasa.gov/2.0/phys.owl#PhysicalPhenomena"
+
+  %ul
+    %li
+      = link_to "Planetary Realm", tags_path(:id => planetaryRealmUri)
+      = link_to_children planetaryRealmUri, @tags
+    %li
+      = link_to "Physical Phenomena", tags_path(:id => physicalPhenomenaUri)
+      = link_to_children physicalPhenomenaUri, @tags
+    
+
+  -#= link_to "Show Cloud", "#", :class => "show_cloud", "tags" => @tags
+  / #cloud
+- else
+  %h2= params[:id].split("#").last
+  %ul
+    - @documents.each do |doc|
+      %li= link_to doc.id, doc.id

@@ -1,0 +1,11 @@
+- form_tag "", :method => :get do
+  = text_field_tag :q, params[:q], :class => "text"
+  = submit_tag "Search"
+
+= link_to "Show Graph", "#", :class => "show_graph"
+
+- if @documents
+  Found #{pluralize @documents.count, "document"}.
+
+- @documents && @documents.each do |document|
+  = render document

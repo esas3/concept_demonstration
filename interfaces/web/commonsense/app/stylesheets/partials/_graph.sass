@@ -1,0 +1,40 @@
+#graph_container
+  position: fixed
+  bottom: 0
+  height: 700px
+  width: 950px
+  -webkit-border-top-right-radius: 2em
+  -webkit-border-top-left-radius: 2em
+  overflow: hidden
+  background-color: #555
+  border: 1px solid #999
+  -webkit-transition: bottom 0.2s ease-out
+  opacity: .95
+  z-index: 99
+  &.hidden
+    bottom: -680px
+#graph_head
+  font-size: .7em
+  color: #999
+  padding: 0 3em
+  text-align: right
+  cursor: pointer
+#graph
+  position: relative
+  a
+    color: white
+  .node
+    user-select: none
+    -moz-user-select: none
+#vis
+  display: none
+  z-index: 999
+#cloud
+  position: relative
+  height: 15em
+#tooltip
+  position: absolute
+  display: none
+  border: 1px solid #888888
+  background: #ffffee
+  padding: 2px

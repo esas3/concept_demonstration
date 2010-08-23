@@ -1,0 +1,37 @@
+!!! 5
+%html
+  %head
+    %title Concept Demonstration
+    = stylesheet_link_tag "compiled/screen"
+    -#= stylesheet_link_tag "base", "RGraph"
+    -#= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"
+    = javascript_include_tag "jquery.min.js"
+    = javascript_include_tag "jsviz/physics/ParticleModel", "jsviz/physics/Magnet", "jsviz/physics/Spring", "jsviz/physics/RungeKuttaIntegrator", "jsviz/physics/Particle"
+    = javascript_include_tag "jsviz/layout/graph/ForceDirectedLayout", "jsviz/layout/view/HTMLGraphView", "jsviz/layout/view/SVGGraphView.js"
+    = javascript_include_tag "jsviz/util/Timer", "jsviz/util/EventHandler"
+    = javascript_include_tag "jsviz/io/DataGraph"
+    :javascript
+      $j = jQuery.noConflict();
+    = javascript_include_tag "jquery.cookie", "json2", "prototype.lite", "jit", "tagcloud", "graph", "application"
+    = yield :head
+  %body
+    #container
+      #tooltip
+      #graph_container.hidden
+        #graph_head Graph
+        #vis
+        #graph{:onmousedown => "window.g.refresh();", :onmouseup => "window.g.refresh();"}
+          %canvas{:width => "950", :height => "680"}
+      %header
+        %nav= show_nav
+        %h1= link_to "Concept Demonstration ESA", root_path
+      #content
+        = show_flash
+        = yield
+      #sidebar
+        - form_tag correlate_documents_path, :method => :put, :id => "bin_form" do
+          -#= submit_tag "Relate"
+          = text_field_tag :tag_name, nil, :class => "text", :style => "width:100px"
+          = submit_tag "Tag"
+          #bin
+        = yield :sidebar

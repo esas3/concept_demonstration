@@ -1,0 +1,68 @@
+PERQUISITES 
+
+1. Core
+
+   Ensure at least Java 6.0 is installed
+   Ensure at least Ruby 1.8.7p249 is installed
+   Ensure at least RubyGems 1.3.7 is installed
+   
+   Install Raptor RDF Parser toolkit
+   
+   Install the following gems with gem install:
+   
+        * sinatra
+        * active_support
+        * rdf
+        * rdf-raptor
+    
+
+1. GATE
+
+   Install GATE Version 5.2.1 from http://gate.ac.uk/download/
+
+2. Solr
+
+   Download Solr Version 1.4.1 from http://mirror.deri.at/apache/lucene/solr/1.4.1/
+   Copy it to your preferred location and ensure it is running by
+   cd [solr_directory]/example
+   java -jar start.jar
+   
+   Now you should be able to connect to http://localhost:8983 and see the Solr Screen
+   
+3. Sesame
+
+   Install Apache Tomcat Version 5 or 6
+   Download Sesame and copy wars to webapps
+   Ensure Sesame is running by going to http://localhost:8080/openrdf-workbench/
+   
+   Add a repository with the name ESA and ensure Inference is on. 
+   
+4. CouchDB
+
+   Install Apache CouchDB from http://couchdb.apache.org/downloads.html
+   Install CouchDB Lucene http://github.com/rnewson/couchdb-lucene
+   
+   
+EXTRACTION
+
+1. Run the ruby_gazetteer_test
+   
+   ruby extract_concepts.rb
+   
+2. Run the batch job for Gate
+
+   see Eclipse Java Project
+   
+   
+SEARCH
+
+1. Ensure all of the above systems are running
+2. Start the rest server
+
+   Change to the src directory
+   ruby lib/rest_server.rb
+
+3. Start the user interface in interfaces
+
+   Change to the src/interfaces/web/commonsense directory
+   script/server

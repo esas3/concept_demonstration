@@ -1,0 +1,55 @@
+%h2= @document.name
+
+.type= @document.doc_type
+
+:javascript
+  $j(function() {
+    window.showGraph(#{@document.id});
+  });
+
+.actions
+  = link_to "Add to bin", "#", :class => "add_to_bin", :'data-docid' => @document.id
+  = link_to "Raw", @document.raw_uri
+  = link_to "Show", @document
+
+- @document.tags.each do |tag|
+  = link_to tag.name.titlecase, tag
+
+- begin
+  = render :partial => @document.doc_type, :object => @document
+- rescue
+  = debug $!
+  = render @document
+
+- form_for Rating.new(:value => nil, :name => nil) do |f|
+  = f.text_field :value, :size => 1, :maxlength => 1
+  = f.hidden_field :name, :value => "user_rating"
+  = f.hidden_field :rateable_id, :value => @document.id
+  = f.hidden_field :rateable_type, :value => "Commonsense::Core::Document"
+  = f.submit "Rate"
+= debug @document.ratings.map(&:value)
+
+%h3 Document Relations
+- @document.outgoing_document_relations.each do |relation|
+  - begin
+    = render :partial => "document", :object => Document.new(relation.destination.attributes)
+    - form_for Rating.new(:value => nil, :name => nil) do |f|
+      = f.text_field :value, :size => 1, :maxlength => 1
+      = f.hidden_field :name, :value => "user_rating"
+      = f.hidden_field :rateable_id, :value => relation.id
+      = f.hidden_field :rateable_type, :value => "Commonsense::Core::DocumentRelation"
+      = f.submit "Rate"
+    = debug relation.ratings.map(&:value)
+  - rescue
+    = debug relation
+
+- if params[:show_temporally_related] == "true"
+  %h3 Documents in temporal Vicinity
+  Found #{pluralize @temporally_related.count, "document"}.
+  = link_to "Condense/expand view", "#", :id => "condense_documents"
+  
+  .documents= render :partial => "document", :collection => @temporally_related
+  
+  = link_to "Hide temporally related documents", :show_temporally_related => false
+- else
+  = link_to "Show temporally related documents", :show_temporally_related => true

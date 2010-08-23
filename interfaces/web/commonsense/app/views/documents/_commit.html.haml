@@ -1,0 +1,20 @@
+.author
+  Author:
+  = link_to_user commit.document.author.name
+  = mail_to commit.document.author.email
+.authored_date
+  Authored Date:
+  = commit.document.authored_date
+.committed_date
+  Committed Date:
+  = commit.document.committed_date
+.parents
+  Parents:
+  - commit.document.parents.each do |parent_id|
+    - parent_id = parent_id.reverse[0,40].reverse
+    - p = Document.find(:first, :from => :by_uri, :params => { :uri => parent_id })
+    = link_to parent_id, p
+.message
+  Message:
+  %pre= commit.document.message
+
